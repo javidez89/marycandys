@@ -4,13 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#ff4f9a">
-<title>MaryCandy's v1.1.1</title>
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="MaryCandy's">
+<title>MaryCandy's v1.2.0</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.svg">
 <link rel="stylesheet" href="marycandys-v1.1.0.css">
 <link rel="stylesheet" href="marycandys-v1.1.1.css">
+<link rel="stylesheet" href="marycandys-v1.2.0.css">
 </head>
 <body>
-<header><div><div class="brand"><span aria-hidden="true">🍭</span><span class="brandText">MaryCandy's</span></div><div class="version">Versión 1.1.1 · Kids UX</div></div><div class="cloud" aria-label="Datos guardados en la nube">☁️ Nube activa</div></header>
+<header><div><div class="brand"><span aria-hidden="true">🍭</span><span class="brandText">MaryCandy's</span></div><div class="version">Versión 1.2.0 · Kids UX · Instalable</div></div><div class="headerActions"><button id="installApp" class="installBtn" type="button" aria-label="Instalar MaryCandy's">📲 Instalar app</button><div class="cloud" aria-label="Datos guardados en la nube">☁️ Nube activa</div></div></header>
 <div class="shell">
+<div id="installHelp" class="installHelp" role="status" aria-live="polite"></div>
 <nav class="nav" aria-label="Navegación principal"><button type="button" data-page="home" class="active" aria-current="page"><span aria-hidden="true">🏠</span>Inicio</button><button type="button" data-page="products"><span aria-hidden="true">🍫</span>Productos</button><button type="button" data-page="sales"><span aria-hidden="true">💰</span>Ventas</button><button type="button" data-page="expenses"><span aria-hidden="true">🛍️</span>Gastos</button></nav>
 <main>
 <section id="home" class="page active" aria-labelledby="homeTitle"><div class="hero"><h1 id="homeTitle">¡Tu negocio de dulces! 🍬</h1><p>Aquí puedes ver cuánto invertiste, cuánto vendiste, cuánto ganaste y cuántos dulces te quedan.</p></div><div class="kidsMetrics"><div class="kidCard purple"><div class="icon">🛒</div><small>Invertiste</small><b id="kInvestment">$0</b></div><div class="kidCard pink"><div class="icon">💵</div><small>Vendiste</small><b id="kSales">$0</b></div><div class="kidCard green"><div class="icon">🌟</div><small>Ganaste</small><b id="kNet">$0</b></div><div class="kidCard"><div class="icon">🍭</div><small>Te quedan</small><b id="kStock">0 dulces</b></div></div><div class="quickFacts"><div class="fact">🍫 Productos que tienes<b id="kProducts">0</b></div><div class="fact">🎉 Dulces que vendiste<b id="kUnits">0</b></div><div class="fact">🚀 Si vendes todo tu stock, podrías ganar<b id="kPotentialProfit">$0</b></div></div><details class="adult"><summary>👨‍👩‍👧 Panel para adulto</summary><div class="adultBody"><div class="adultGrid"><div class="adultMetric"><small>Ganancia bruta de ventas</small><b id="aGross">$0</b></div><div class="adultMetric"><small>Gastos</small><b id="aExpenses">$0</b></div><div class="adultMetric"><small>Utilidad neta</small><b id="aNet">$0</b></div><div class="adultMetric"><small>Margen neto</small><b id="aMargin">0%</b></div><div class="adultMetric"><small>Inversión registrada</small><b id="aInvestment">$0</b></div><div class="adultMetric"><small>Valor de venta del inventario</small><b id="aInventorySale">$0</b></div><div class="adultMetric"><small>Productos registrados</small><b id="aProducts">0</b></div><div class="adultMetric"><small>Stock disponible</small><b id="aStock">0</b></div></div><div class="sectionGap card" style="box-shadow:none;background:#fffdfd"><h3>🏆 Productos más vendidos</h3><div id="topProducts" class="rank empty">Aún no hay ventas.</div></div></div></details></section>
@@ -19,4 +28,5 @@
 <section id="expenses" class="page" aria-labelledby="expensesTitle"><div class="pageHead"><div><h1 id="expensesTitle">🛍️ Anotar un gasto</h1><p>Si compras bolsitas, stickers u otra cosa para el negocio, anótalo aquí.</p></div><button type="button" class="backBtn" data-go-home>← Inicio</button></div><div class="grid twoCol"><div class="card"><h2>🧾 Pagué algo para el negocio</h2><form id="expenseForm"><div><label for="eConcept">¿Qué compraste?</label><input id="eConcept" required autocomplete="off" placeholder="Ej. Bolsitas"></div><div><label for="eAmount">¿Cuánto pagaste?</label><input id="eAmount" type="number" inputmode="decimal" min="0" step="0.01" required placeholder="Ej. 5000"></div><div><label for="eNotes">¿Quieres recordar algo?</label><textarea id="eNotes" placeholder="Opcional"></textarea></div><button id="expenseSubmit" class="primary" type="submit">🛍️ Guardar mi gasto</button><div id="expenseStatus" class="status" role="status" aria-live="polite"></div></form></div><div class="card"><h2>📚 Lo que has gastado</h2><div id="expenseHistory" class="historyList"></div></div></div></section>
 </main></div>
 <script src="marycandys-v1.1.1.js" defer></script>
+<script src="marycandys-v1.2.0-pwa.js" defer></script>
 </body></html>
