@@ -1,1 +1,157 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>MaryCandy's v1.0.2</title><style>:root{--pink:#ff4f9a;--purple:#7047eb;--ink:#2d2140;--muted:#776b84;--green:#149b64;--line:#eee5f3}*{box-sizing:border-box}html,body{max-width:100%;overflow-x:hidden}body{margin:0;font-family:Inter,system-ui,-apple-system,sans-serif;background:linear-gradient(135deg,#fff7fb,#f5
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>MaryCandy's v1.0.3</title>
+<style>
+:root{--pink:#ff4f9a;--purple:#7047eb;--ink:#2d2140;--muted:#776b84;--green:#149b64;--line:#eee5f3;--soft:#fff7fb}
+*{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden}
+body{margin:0;font-family:Inter,system-ui,-apple-system,sans-serif;background:linear-gradient(135deg,#fff7fb,#f5f0ff);color:var(--ink);min-height:100vh}
+header{min-height:68px;padding:10px max(16px,env(safe-area-inset-left));display:flex;justify-content:space-between;gap:10px;align-items:center;background:#ffffffdf;backdrop-filter:blur(14px);position:sticky;top:0;z-index:20;border-bottom:1px solid #f2e9f5}
+.brand{font-weight:950;font-size:23px}.brand span{color:var(--pink)}
+.version{font-size:11px;color:var(--muted);font-weight:800}
+.cloud{padding:7px 10px;border-radius:999px;background:#ecfff6;color:#08794a;font-size:12px;font-weight:850;white-space:nowrap}
+.shell{width:min(1180px,100%);margin:auto;padding:22px}
+.nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:24px}
+.nav button,.homeBtn{border:0;border-radius:16px;padding:13px 8px;background:#fff;color:var(--ink);font-weight:850;cursor:pointer}
+.nav button.active{background:var(--ink);color:#fff}
+.page{display:none;width:100%;min-width:0}.page.active{display:block}
+.hero{padding:12px 2px 22px}.hero h1{font-size:clamp(30px,6vw,54px);line-height:1.02;margin:0 0 8px}.hero p{color:var(--muted);margin:0}
+.metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.card{min-width:0;background:#fff;border:1px solid #f5edf7;border-radius:22px;padding:20px;box-shadow:0 12px 35px #6b3d8d10}
+.metric small{color:var(--muted);font-weight:750}.metric b{display:block;font-size:clamp(20px,3vw,30px);margin-top:7px;overflow-wrap:anywhere}.good{color:var(--green)}
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.55fr);gap:18px;margin-top:18px}
+.pageTitle{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:6px 0 18px}.pageTitle h2{margin:0;font-size:28px}
+form{display:grid;gap:11px;min-width:0}label{font-size:13px;font-weight:850;color:var(--muted)}
+input,select,textarea{display:block;min-width:0;width:100%;max-width:100%;padding:13px;border:1px solid #e5dbea;border-radius:13px;font:inherit;background:#fff}
+textarea{min-height:82px;resize:vertical}
+button.primary{width:100%;border:0;border-radius:14px;padding:13px 16px;font-weight:900;cursor:pointer;background:var(--purple);color:#fff}.pink{background:var(--pink)!important}
+.calcGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.calc{min-width:0;padding:12px;border-radius:14px;background:#f4fff9;border:1px solid #c9f1dd;font-size:12px;color:var(--muted)}.calc b{display:block;font-size:17px;color:var(--green);margin-top:4px;overflow-wrap:anywhere}
+.tableWrap{width:100%;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:12px}
+.desktopTable{width:100%;border-collapse:collapse;min-width:860px;font-size:14px}.desktopTable th,.desktopTable td{text-align:left;padding:12px 9px;border-bottom:1px solid var(--line);vertical-align:top}.desktopTable th{color:var(--muted);font-size:12px}
+.mobileList{display:none}.mobileItem{border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:11px;background:linear-gradient(180deg,#fff,#fffafd)}.mobileItem .productName{font-size:18px;font-weight:900;margin-bottom:8px;color:var(--ink)}.mobileItem .row{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding:5px 0}.mobileItem .row span:first-child{color:var(--muted);font-size:12px}.mobileItem .row b{text-align:right;overflow-wrap:anywhere}
+.status,.empty{font-size:12px;color:var(--muted);margin-top:10px}.rank p{padding:9px 0;margin:0;border-bottom:1px solid var(--line)}
+.tip{margin-top:10px;padding:10px 12px;border-radius:13px;background:#fff4fa;color:#9c3262;font-size:12px;font-weight:750}
+@media(max-width:820px){.shell{padding:15px 15px 100px}.metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.two{grid-template-columns:minmax(0,1fr)}.nav{position:fixed;z-index:30;left:8px;right:8px;bottom:max(8px,env(safe-area-inset-bottom));margin:0;padding:6px;background:#ffffffed;border:1px solid #eee3f2;border-radius:20px;box-shadow:0 12px 40px #34234426}.nav button{padding:11px 3px;font-size:11px}.pageTitle{align-items:flex-start}.calcGrid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:600px){header{min-height:62px}.brand{font-size:19px}.cloud{font-size:10px;padding:6px 8px}.pageTitle h2{font-size:24px}.pageTitle .homeBtn{display:none}.card{padding:15px;border-radius:18px}.desktopTable{display:none}.mobileList{display:block}.calcGrid{grid-template-columns:1fr}.hero h1{font-size:34px}.metrics{gap:8px}.metric b{font-size:20px}.metric small{font-size:11px}}
+@media(max-width:360px){.shell{padding-left:10px;padding-right:10px}.metrics{grid-template-columns:1fr}.nav button{font-size:10px}.cloud{display:none}}
+</style>
+</head>
+<body>
+<header>
+  <div><div class="brand">🍭 <span>MaryCandy's</span></div><div class="version">Versión 1.0.3</div></div>
+  <div class="cloud">☁️ Nube activa</div>
+</header>
+<div class="shell">
+<nav class="nav">
+  <button data-page="home" class="active">🏠<br>Home</button>
+  <button data-page="products">🍫<br>Productos</button>
+  <button data-page="sales">💰<br>Ventas</button>
+  <button data-page="expenses">🛍️<br>Gastos</button>
+</nav>
+<main>
+<section id="home" class="page active">
+  <div class="hero"><h1>¡Cada dulce cuenta! 🍬</h1><p>Tu negocio, explicado fácil: cuánto invertiste, cuánto vendiste y cuánto puedes ganar.</p></div>
+  <div class="metrics">
+    <div class="card metric"><small>Ventas totales</small><b id="kSales">$0</b></div>
+    <div class="card metric"><small>Ganancia bruta ventas</small><b class="good" id="kGross">$0</b></div>
+    <div class="card metric"><small>Gastos</small><b id="kExpenses">$0</b></div>
+    <div class="card metric"><small>Utilidad neta</small><b class="good" id="kNet">$0</b></div>
+    <div class="card metric"><small>Total productos</small><b id="kProducts">0</b></div>
+    <div class="card metric"><small>Inversión total</small><b id="kInvestment">$0</b></div>
+    <div class="card metric"><small>Valor venta inventario</small><b id="kInventoryValue">$0</b></div>
+    <div class="card metric"><small>Ganancia potencial total</small><b class="good" id="kPotentialProfit">$0</b></div>
+  </div>
+  <div class="two">
+    <div class="card"><h3>📊 Resumen gerencial</h3><p>Productos registrados: <b id="dProducts">0</b></p><p>Inventario disponible: <b id="dStock">0</b> unidades</p><p>Unidades vendidas: <b id="dUnits">0</b></p><p>Margen neto: <b id="dMargin">0%</b></p></div>
+    <div class="card"><h3>🏆 Productos más vendidos</h3><div id="topProducts" class="rank empty">Aún no hay ventas.</div></div>
+  </div>
+</section>
+<section id="products" class="page">
+  <div class="pageTitle"><h2>🍫 Productos</h2><button class="homeBtn" data-go-home>← Dashboard</button></div>
+  <div class="two">
+    <div class="card">
+      <h3>Agregar producto</h3>
+      <form id="productForm">
+        <label>Nombre del dulce</label><input id="pName" required placeholder="Ej. Gomitas">
+        <label>Precio de compra del paquete</label><input id="pCost" type="number" min="0" step="0.01" required placeholder="Ej. 20000">
+        <label>Unidades que trae el paquete</label><input id="pUnits" type="number" min="1" required placeholder="Ej. 50">
+        <label>Stock inicial</label><input id="pStock" type="number" min="0" required placeholder="Ej. 50">
+        <div class="calcGrid">
+          <div class="calc">Costo por unidad<b id="unitCost">$0</b></div>
+          <div class="calc">Ganancia 30%<b id="profit">$0</b></div>
+          <div class="calc">Precio de venta<b id="salePrice">$0</b></div>
+        </div>
+        <div class="tip">✨ MaryCandy's calcula automáticamente el precio de venta sumando 30% al costo por unidad.</div>
+        <button class="primary">Guardar en la nube</button><div id="productStatus" class="status"></div>
+      </form>
+    </div>
+    <div class="card">
+      <h3>Mis productos</h3>
+      <div class="tableWrap"><table class="desktopTable"><thead><tr><th>Producto</th><th>Compra paquete</th><th>Unid. paquete</th><th>Costo/u</th><th>Venta/u</th><th>Ganancia/u</th><th>Stock</th></tr></thead><tbody id="productRows"></tbody></table></div>
+      <div id="productMobile" class="mobileList"></div>
+    </div>
+  </div>
+</section>
+<section id="sales" class="page">
+  <div class="pageTitle"><h2>💰 Ventas</h2><button class="homeBtn" data-go-home>← Dashboard</button></div>
+  <div class="two">
+    <div class="card"><h3>Nueva venta</h3><form id="saleForm"><label>Producto</label><select id="sProduct" required></select><label>Cantidad</label><input id="sQty" type="number" min="1" required><label>Nota</label><textarea id="sNotes" placeholder="Opcional"></textarea><button class="primary pink">Registrar venta</button><div id="saleStatus" class="status"></div></form></div>
+    <div class="card"><h3>Ventas recientes</h3><div class="tableWrap"><table class="desktopTable"><thead><tr><th>Fecha</th><th>Producto</th><th>Cant.</th><th>Total</th><th>Ganancia</th></tr></thead><tbody id="saleRows"></tbody></table></div><div id="saleMobile" class="mobileList"></div></div>
+  </div>
+</section>
+<section id="expenses" class="page">
+  <div class="pageTitle"><h2>🛍️ Gastos</h2><button class="homeBtn" data-go-home>← Dashboard</button></div>
+  <div class="two">
+    <div class="card"><h3>Nuevo gasto</h3><form id="expenseForm"><label>Concepto</label><input id="eConcept" required placeholder="Ej. Bolsitas"><label>Valor</label><input id="eAmount" type="number" min="0" step="0.01" required><label>Nota</label><textarea id="eNotes" placeholder="Opcional"></textarea><button class="primary">Guardar gasto</button><div id="expenseStatus" class="status"></div></form></div>
+    <div class="card"><h3>Historial</h3><div class="tableWrap"><table class="desktopTable"><thead><tr><th>Fecha</th><th>Concepto</th><th>Valor</th></tr></thead><tbody id="expenseRows"></tbody></table></div><div id="expenseMobile" class="mobileList"></div></div>
+  </div>
+</section>
+</main>
+</div>
+<script>
+const API='https://ddpcbqiiztzgxwkdpszb.supabase.co/functions/v1/marycandys-api';
+const $=id=>document.getElementById(id);
+const cop=n=>new Intl.NumberFormat('es-CO',{style:'currency',currency:'COP',maximumFractionDigits:0}).format(Number(n||0));
+const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+let state={products:[],sales:[],expenses:[]};
+async function api(action,data={}){const r=await fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action,...data})});const j=await r.json();if(!r.ok||j.error)throw new Error(j.error||'Error de conexión');return j}
+async function load(){state=await api('dashboard');render()}
+function go(page){document.querySelectorAll('.page,.nav button').forEach(x=>x.classList.remove('active'));$(page).classList.add('active');document.querySelector(`.nav button[data-page="${page}"]`).classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>go(b.dataset.page));
+document.querySelectorAll('[data-go-home]').forEach(b=>b.onclick=()=>go('home'));
+const mobileProduct=p=>`<div class="mobileItem"><div class="productName">🍬 ${esc(p.name)}</div><div class="row"><span>Precio compra paquete</span><b>${cop(p.package_cost)}</b></div><div class="row"><span>Unidades del paquete</span><b>${p.units_per_package}</b></div><div class="row"><span>Costo por unidad</span><b>${cop(p.unit_cost)}</b></div><div class="row"><span>Precio de venta</span><b>${cop(p.sale_price)}</b></div><div class="row"><span>Ganancia por unidad</span><b class="good">${cop(+p.sale_price-+p.unit_cost)}</b></div><div class="row"><span>Stock disponible</span><b>${p.stock}</b></div></div>`;
+const mobileItem=rows=>`<div class="mobileItem">${rows.map(([a,b])=>`<div class="row"><span>${a}</span><b>${b}</b></div>`).join('')}</div>`;
+function render(){
+  const revenue=state.sales.reduce((a,s)=>a+s.quantity*+s.unit_price,0);
+  const soldCost=state.sales.reduce((a,s)=>a+s.quantity*+s.unit_cost,0);
+  const expenses=state.expenses.reduce((a,e)=>a+ +e.amount,0);
+  const gross=revenue-soldCost,net=gross-expenses;
+  const investment=state.products.reduce((a,p)=>a+(+p.package_cost||0),0);
+  const inventoryCost=state.products.reduce((a,p)=>a+p.stock*+p.unit_cost,0);
+  const inventorySale=state.products.reduce((a,p)=>a+p.stock*+p.sale_price,0);
+  const potential=inventorySale-inventoryCost;
+  $('kSales').textContent=cop(revenue);$('kGross').textContent=cop(gross);$('kExpenses').textContent=cop(expenses);$('kNet').textContent=cop(net);$('kProducts').textContent=state.products.length;$('kInvestment').textContent=cop(investment);$('kInventoryValue').textContent=cop(inventorySale);$('kPotentialProfit').textContent=cop(potential);$('dProducts').textContent=state.products.length;$('dStock').textContent=state.products.reduce((a,p)=>a+p.stock,0);$('dUnits').textContent=state.sales.reduce((a,s)=>a+s.quantity,0);$('dMargin').textContent=revenue?(net/revenue*100).toFixed(1)+'%':'0%';
+  const products=state.products;
+  $('productRows').innerHTML=products.map(p=>`<tr><td><b>${esc(p.name)}</b></td><td>${cop(p.package_cost)}</td><td>${p.units_per_package}</td><td>${cop(p.unit_cost)}</td><td><b>${cop(p.sale_price)}</b></td><td class="good"><b>${cop(+p.sale_price-+p.unit_cost)}</b></td><td>${p.stock}</td></tr>`).join('')||'<tr><td colspan="7">Sin productos</td></tr>';
+  $('productMobile').innerHTML=products.map(mobileProduct).join('')||'<div class="empty">Sin productos</div>';
+  $('sProduct').innerHTML='<option value="">Selecciona...</option>'+products.filter(p=>p.stock>0).map(p=>`<option value="${p.id}">${esc(p.name)} · ${cop(p.sale_price)} · Stock ${p.stock}</option>`).join('');
+  const sales=state.sales.slice(0,30);
+  $('saleRows').innerHTML=sales.map(s=>`<tr><td>${new Date(s.sold_at).toLocaleDateString('es-CO')}</td><td>${esc(s.products?.name||'')}</td><td>${s.quantity}</td><td>${cop(s.quantity*+s.unit_price)}</td><td class="good">${cop(s.quantity*(+s.unit_price-+s.unit_cost))}</td></tr>`).join('')||'<tr><td colspan="5">Sin ventas</td></tr>';
+  $('saleMobile').innerHTML=sales.map(s=>mobileItem([['Fecha',new Date(s.sold_at).toLocaleDateString('es-CO')],['Producto',esc(s.products?.name||'')],['Cantidad',s.quantity],['Total',cop(s.quantity*+s.unit_price)],['Ganancia',cop(s.quantity*(+s.unit_price-+s.unit_cost))]])).join('')||'<div class="empty">Sin ventas</div>';
+  const ex=state.expenses.slice(0,30);
+  $('expenseRows').innerHTML=ex.map(e=>`<tr><td>${new Date(e.spent_at).toLocaleDateString('es-CO')}</td><td>${esc(e.concept)}</td><td>${cop(e.amount)}</td></tr>`).join('')||'<tr><td colspan="3">Sin gastos</td></tr>';
+  $('expenseMobile').innerHTML=ex.map(e=>mobileItem([['Fecha',new Date(e.spent_at).toLocaleDateString('es-CO')],['Concepto',esc(e.concept)],['Valor',cop(e.amount)]])).join('')||'<div class="empty">Sin gastos</div>';
+  let top={};sales.forEach(s=>{const n=s.products?.name||'Producto';top[n]=(top[n]||0)+s.quantity});$('topProducts').innerHTML=Object.entries(top).sort((a,b)=>b[1]-a[1]).slice(0,5).map(([n,q],i)=>`<p>${['🥇','🥈','🥉','🍬','🍭'][i]} <b>${esc(n)}</b> · ${q} unidades</p>`).join('')||'Aún no hay ventas.';
+}
+function calc(){const total=+$('pCost').value||0,u=+$('pUnits').value||0,unit=u?total/u:0,profit=unit*.30;$('unitCost').textContent=cop(unit);$('profit').textContent=cop(profit);$('salePrice').textContent=cop(unit+profit)}
+['pCost','pUnits'].forEach(id=>$(id).oninput=calc);
+$('productForm').onsubmit=async e=>{e.preventDefault();$('productStatus').textContent='Guardando...';try{await api('add_product',{name:$('pName').value,package_cost:+$('pCost').value,units_per_package:+$('pUnits').value,stock:+$('pStock').value});e.target.reset();calc();$('productStatus').textContent='✓ Producto guardado en la nube';await load()}catch(x){$('productStatus').textContent=x.message}};
+$('saleForm').onsubmit=async e=>{e.preventDefault();$('saleStatus').textContent='Guardando...';try{await api('add_sale',{product_id:+$('sProduct').value,quantity:+$('sQty').value,notes:$('sNotes').value});e.target.reset();$('saleStatus').textContent='✓ Venta registrada';await load()}catch(x){$('saleStatus').textContent=x.message}};
+$('expenseForm').onsubmit=async e=>{e.preventDefault();$('expenseStatus').textContent='Guardando...';try{await api('add_expense',{concept:$('eConcept').value,amount:+$('eAmount').value,notes:$('eNotes').value});e.target.reset();$('expenseStatus').textContent='✓ Gasto guardado';await load()}catch(x){$('expenseStatus').textContent=x.message}};
+load().catch(e=>alert('No fue posible conectar con la nube: '+e.message));
+</script>
+</body>
+</html>
