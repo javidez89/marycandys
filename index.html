@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#ff4f9a">
-<title>MaryCandy's v1.1.0</title>
+<title>MaryCandy's v1.1.1</title>
 <link rel="stylesheet" href="marycandys-v1.1.0.css">
+<link rel="stylesheet" href="marycandys-v1.1.1.css">
 </head>
 <body>
-<header><div><div class="brand"><span aria-hidden="true">🍭</span><span class="brandText">MaryCandy's</span></div><div class="version">Versión 1.1.0 · Kids UX</div></div><div class="cloud" aria-label="Datos guardados en la nube">☁️ Nube activa</div></header>
+<header><div><div class="brand"><span aria-hidden="true">🍭</span><span class="brandText">MaryCandy's</span></div><div class="version">Versión 1.1.1 · Kids UX</div></div><div class="cloud" aria-label="Datos guardados en la nube">☁️ Nube activa</div></header>
 <div class="shell">
 <nav class="nav" aria-label="Navegación principal"><button type="button" data-page="home" class="active" aria-current="page"><span aria-hidden="true">🏠</span>Inicio</button><button type="button" data-page="products"><span aria-hidden="true">🍫</span>Productos</button><button type="button" data-page="sales"><span aria-hidden="true">💰</span>Ventas</button><button type="button" data-page="expenses"><span aria-hidden="true">🛍️</span>Gastos</button></nav>
 <main>
@@ -17,5 +18,5 @@
 <section id="sales" class="page" aria-labelledby="salesTitle"><div class="pageHead"><div><h1 id="salesTitle">💰 Registrar una venta</h1><p>Elige el dulce, escribe cuántos vendiste y mira cuánto recibes y cuánto ganas.</p></div><button type="button" class="backBtn" data-go-home>← Inicio</button></div><div class="grid twoCol"><div class="card"><h2>🎉 ¡Hice una venta!</h2><form id="saleForm"><div><label for="sProduct">¿Qué dulce vendiste?</label><select id="sProduct" required></select></div><div><label for="sQty">¿Cuántos vendiste?</label><input id="sQty" type="number" inputmode="numeric" min="1" step="1" required placeholder="Ej. 3"></div><div id="salePreview" class="salePreview" aria-live="polite"><h3>Así quedaría tu venta ✨</h3><div class="previewGrid"><div class="previewBox"><small>Vas a recibir</small><b id="pvReceive">$0</b></div><div class="previewBox"><small>Vas a ganar</small><b id="pvGain">$0</b></div><div class="previewBox"><small>Vas a vender</small><b id="pvQty">0 dulces</b></div><div class="previewBox"><small>Te quedarían</small><b id="pvStock">0 dulces</b></div></div></div><div><label for="sNotes">¿Quieres recordar algo?</label><textarea id="sNotes" placeholder="Opcional"></textarea></div><button id="saleSubmit" class="primary sale" type="submit">💖 Guardar mi venta</button><div id="saleStatus" class="status" role="status" aria-live="polite"></div></form><div id="celebrate" class="celebrate" role="status" aria-live="polite"></div></div><div class="card"><h2>🧾 Tus últimas ventas</h2><div id="saleHistory" class="historyList"></div></div></div></section>
 <section id="expenses" class="page" aria-labelledby="expensesTitle"><div class="pageHead"><div><h1 id="expensesTitle">🛍️ Anotar un gasto</h1><p>Si compras bolsitas, stickers u otra cosa para el negocio, anótalo aquí.</p></div><button type="button" class="backBtn" data-go-home>← Inicio</button></div><div class="grid twoCol"><div class="card"><h2>🧾 Pagué algo para el negocio</h2><form id="expenseForm"><div><label for="eConcept">¿Qué compraste?</label><input id="eConcept" required autocomplete="off" placeholder="Ej. Bolsitas"></div><div><label for="eAmount">¿Cuánto pagaste?</label><input id="eAmount" type="number" inputmode="decimal" min="0" step="0.01" required placeholder="Ej. 5000"></div><div><label for="eNotes">¿Quieres recordar algo?</label><textarea id="eNotes" placeholder="Opcional"></textarea></div><button id="expenseSubmit" class="primary" type="submit">🛍️ Guardar mi gasto</button><div id="expenseStatus" class="status" role="status" aria-live="polite"></div></form></div><div class="card"><h2>📚 Lo que has gastado</h2><div id="expenseHistory" class="historyList"></div></div></div></section>
 </main></div>
-<script src="marycandys-v1.1.0.js" defer></script>
+<script src="marycandys-v1.1.1.js" defer></script>
 </body></html>
