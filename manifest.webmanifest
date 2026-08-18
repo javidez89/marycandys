@@ -1,0 +1,28 @@
+{
+  "id": "./",
+  "name": "MaryCandy's",
+  "short_name": "MaryCandy's",
+  "description": "App sencilla para aprender a manejar un pequeño negocio de dulces.",
+  "lang": "es-CO",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#fff7fb",
+  "theme_color": "#ff4f9a",
+  "prefer_related_applications": false,
+  "categories": ["education", "business"],
+  "icons": [
+    {
+      "src": "icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
